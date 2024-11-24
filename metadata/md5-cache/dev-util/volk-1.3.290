@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=~media-libs/vulkan-loader-1.3.290:= ~dev-util/vulkan-headers-1.3.290
+DESCRIPTION=Meta loader for Vulkan API
+EAPI=7
+HOMEPAGE=https://github.com/zeux/volk
+IUSE=test
+KEYWORDS=*
+LICENSE=MIT
+RDEPEND=~media-libs/vulkan-loader-1.3.290:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/zeux/volk/tarball/466085407d5d2f50583fd663c1d65f93a7709d3e -> volk-1.3.290-4660854.tar.gz
+_eclasses_=cmake-utils	77cd39e6009811bf97a59d91ffd5b54f	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	d0939f99dd528dd0c5ec25284877bf5c	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	e7575bc4a90349d76e72777013b2bbc2	toolchain-funcs	24921b57d6561d87cbef4916a296ada4	xdg-utils	14d00d009167652b1fa363e55effe213
+_md5_=032666236b96a94f900422a7f89cb77f
