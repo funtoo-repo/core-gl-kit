@@ -11,6 +11,6 @@ RDEPEND=dev-libs/elfutils dev-libs/glib:2 sys-apps/kmod:= sys-libs/libunwind:= s
 REQUIRED_USE=|| ( video_cards_amdgpu video_cards_intel video_cards_nouveau ) overlay? ( video_cards_intel || ( X xv ) ) doc? ( tests )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://www.x.org/releases/individual/app/igt-gpu-tools-1.29.tar.xz -> igt-gpu-tools-1.29.tar.xz
+SRC_URI=https://www.x.org/releases/individual/app/igt-gpu-tools-1.30.tar.xz -> igt-gpu-tools-1.30.tar.xz
 _eclasses_=eapi8-dosym	cd7d420bb5be5ee079f27239ce76b8f5	meson	05aa1843efaa1d580f7007e5482fc201	multilib	d410501a125f99ffb560b0c523cd3d1e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	e7575bc4a90349d76e72777013b2bbc2	python-any-r1	54a3178500786b0a7ede4a23b7f2a6ad	python-utils-r1	d3f9ec72badd0291b655682d67876adc	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=703509dc52476fa3531e092592823d0c
+_md5_=46079343da724507a6527dc0aa01a224
