@@ -6,7 +6,7 @@ inherit autotools linux-info flag-o-matic
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
 IUSE=" "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics/-/archive/xf86-input-synaptics-1.9.2/xf86-input-synaptics-xf86-input-synaptics-1.9.2.tar.bz2 -> xf86-input-synaptics-1.9.2-gitlab.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics/-/archive/xf86-input-synaptics-1.10.0/xf86-input-synaptics-xf86-input-synaptics-1.10.0.tar.bz2 -> xf86-input-synaptics-1.10.0-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 DEPEND="sys-kernel/linux-headers
