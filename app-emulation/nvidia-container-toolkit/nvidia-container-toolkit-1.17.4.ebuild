@@ -10,12 +10,12 @@ HOMEPAGE="https://github.com/NVIDIA/nvidia-container-toolkit"
 EGO_SUM=(
 	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.1"
 	"github.com/!n!v!i!d!i!a/go-nvlib v0.6.1/go.mod"
-	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-0"
-	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-0/go.mod"
+	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-1"
+	"github.com/!n!v!i!d!i!a/go-nvml v0.12.4-1/go.mod"
 	"github.com/blang/semver/v4 v4.0.0"
 	"github.com/blang/semver/v4 v4.0.0/go.mod"
-	"github.com/cpuguy83/go-md2man/v2 v2.0.4"
-	"github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod"
+	"github.com/cpuguy83/go-md2man/v2 v2.0.5"
+	"github.com/cpuguy83/go-md2man/v2 v2.0.5/go.mod"
 	"github.com/creack/pty v1.1.9/go.mod"
 	"github.com/davecgh/go-spew v1.1.0/go.mod"
 	"github.com/davecgh/go-spew v1.1.1"
@@ -70,8 +70,8 @@ EGO_SUM=(
 	"github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635"
 	"github.com/syndtr/gocapability v0.0.0-20200815063812-42c35b437635/go.mod"
 	"github.com/urfave/cli v1.19.1/go.mod"
-	"github.com/urfave/cli/v2 v2.27.4"
-	"github.com/urfave/cli/v2 v2.27.4/go.mod"
+	"github.com/urfave/cli/v2 v2.27.5"
+	"github.com/urfave/cli/v2 v2.27.5/go.mod"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f/go.mod"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb"
 	"github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb/go.mod"
@@ -106,14 +106,14 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/cb82e29c75d387992bf59eb6eadf5d96cb6d4747 -> nvidia-container-toolkit-1.17.3-cb82e29.tar.gz
-https://direct-github.funmore.org/6c/b4/e4/6cb4e4b86d720ace458f138b1adc2532af333659a88d5aee98a052187c47fd4f765d4e01cea8cfc1a89165bd075b08de475c655250e6bdd0cb2d8c2b35cf2f6d -> nvidia-container-toolkit-1.17.3-funtoo-go-bundle-34f476ffd1b68b563fd1e08b41e669bda73018a10ba50d614e3c6eac3b3e1ca65c2e8ef777b32fe9be19fd905c556ca8c911c9238cba4d3c67445d73a7a26a39.tar.gz"
+SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/9b69590c7428470a72f2ae05f826412976af1395 -> nvidia-container-toolkit-1.17.4-9b69590.tar.gz
+https://direct-github.funmore.org/d3/41/ee/d341ee8a3b5be44a1d59aee2553a51644387cff0602273167823606dce4474f0dd86db5298386f91942bec40df22c0c38a859d2a96e211180fee4fc4bf65ee6b -> nvidia-container-toolkit-1.17.4-funtoo-go-bundle-5797c82b27414aeba8a32d341870d81c9ddee697414811d69d6aba8166c3fe09f21ede522906fb84c0a7fc2340faf78a9b9e5ef68fca9589f55a2e7bf2cbcbae.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="*"
 IUSE=""
-S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-cb82e29"
+S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-9b69590"
 
 RDEPEND="app-emulation/libnvidia-container"
 
