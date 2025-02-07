@@ -6,7 +6,7 @@ inherit cmake
 
 DESCRIPTION="Platform-agnostic interfaces for WPE WebKit"
 HOMEPAGE="https://wpewebkit.org/"
-SRC_URI="https://api.github.com/repos/WebPlatformForEmbedded/libwpe/tarball/1.16.1 -> libwpe-1.16.1.tar.gz"
+SRC_URI="https://api.github.com/repos/WebPlatformForEmbedded/libwpe/tarball/1.16.2 -> libwpe-1.16.2.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="1.0"
