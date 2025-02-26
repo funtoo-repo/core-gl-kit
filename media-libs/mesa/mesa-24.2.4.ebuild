@@ -2,7 +2,7 @@
 
 EAPI=7
 
-LLVM_COMPAT=( {15..17} )
+LLVM_SLOT=16
 LLVM_OPTIONAL=1
 PYTHON_COMPAT=( python3+ )
 
@@ -14,7 +14,7 @@ DESCRIPTION="OpenGL-like graphic library for Linux"
 HOMEPAGE="https://www.mesa3d.org/ https://mesa.freedesktop.org/"
 
 SRC_URI="https://archive.mesa3d.org/${MY_P}.tar.xz"
-KEYWORDS=""
+KEYWORDS="next"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -31,7 +31,7 @@ IUSE="${IUSE_VIDEO_CARDS}
 	cpu_flags_x86_sse2 d3d9 debug gles1 +gles2 +llvm
 	lm-sensors opencl +opengl osmesa +proprietary-codecs selinux
 	test unwind vaapi valgrind vdpau vulkan
-	vulkan-overlay wayland +X xa zink +zstd"
+	vulkan-overlay wayland +X xa zink +zstd egl gbm glvnd"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	d3d9? (
@@ -62,13 +62,11 @@ RDEPEND="
 	>=sys-libs/zlib-1.2.8
 	unwind? ( sys-libs/libunwind )
 	llvm? (
-		$(llvm_gen_dep "
-			sys-devel/llvm:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+			sys-devel/llvm:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
 			opencl? (
-				dev-util/spirv-llvm-translator:\${LLVM_SLOT}
-				sys-devel/clang:\${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
+				dev-util/spirv-llvm-translator:${LLVM_SLOT}
+				sys-devel/clang:${LLVM_SLOT}[llvm_targets_AMDGPU(+)]
 			)
-		")
 		video_cards_r600? (
 			virtual/libelf:0=
 		)
@@ -79,7 +77,7 @@ RDEPEND="
 	lm-sensors? ( sys-apps/lm-sensors:= )
 	opencl? (
 		>=virtual/opencl-3
-		dev-libs/libclc[spirv(-)]
+		dev-libs/libclc
 		>=dev-util/spirv-tools-1.3.231.0
 		virtual/libelf:0=
 	)
@@ -155,7 +153,6 @@ x86? (
 )"
 
 PATCHES=(
-	"${FILESDIR}"/${PV}-dzn-Include-vulkan_core.h-instead-of-vulkan.h-in-the.patch
 )
 
 pkg_pretend() {
@@ -233,7 +230,7 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 
-	use llvm && llvm-r1_pkg_setup
+	#use llvm && llvm-r1_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -356,20 +353,20 @@ src_configure() {
 	if use llvm && use vulkan && use video_cards_intel && use amd64; then
 		emesonargs+=(-Dintel-clc=system)
 	else
-		emesonargs+=(-Dintel-clc=disabled)
+		emesonargs+=(-Dintel-clc=auto)
 	fi
 
 	if use opengl || use gles1 || use gles2; then
 		emesonargs+=(
 			-Degl=enabled
 			-Dgbm=enabled
-			-Dglvnd=true
+			-Dglvnd=enabled
 		)
 	else
 		emesonargs+=(
 			-Degl=disabled
 			-Dgbm=disabled
-			-Dglvnd=false
+			-Dglvnd=disabled
 		)
 	fi
 
@@ -398,7 +395,6 @@ src_configure() {
 		-Dvideo-codecs=$(usex proprietary-codecs "all" "all_free")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
 		-Dvulkan-drivers=$(driver_list "${VULKAN_DRIVERS[*]}")
-		-Dbuildtype=$(usex debug debug plain)
 		-Db_ndebug=$(usex debug false true)
 	)
 	meson_src_configure
