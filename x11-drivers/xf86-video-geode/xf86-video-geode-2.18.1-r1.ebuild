@@ -6,7 +6,7 @@ inherit autotools linux-info flag-o-matic
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
 IUSE="ztv "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.11.21/xf86-video-geode-xf86-video-geode-2.11.21.tar.bz2 -> xf86-video-geode-2.11.21-gitlab.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.18.1/xf86-video-geode-xf86-video-geode-2.18.1.tar.bz2 -> xf86-video-geode-2.18.1-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 DEPEND="
