@@ -136,7 +136,7 @@ BDEPEND="
 			video_cards_intel? (
 				amd64? (
 					$(python_gen_any_dep "dev-python/ply[\${PYTHON_USEDEP}]")
-					~dev-util/intel_clc-${PV}
+					~dev-util/mesa_clc-${PV}
 					dev-libs/libclc[spirv(-)]
 				)
 			)
@@ -230,7 +230,7 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 
-	#use llvm && llvm-r1_pkg_setup
+	use llvm && llvm_pkg_setup
 	python-any-r1_pkg_setup
 }
 
@@ -241,6 +241,11 @@ src_prepare() {
 }
 
 src_configure() {
+	local llvm_version=$(llvm-config --version) || die
+	local clang_version=$(ver_cut 1 "${llvm_version}")
+	export CLANG_RESOURCE_DIR="../../../../lib/clang/${clang_version}"
+    export PKG_CONFIG_PATH="$(get_llvm_prefix)/$(get_libdir)/pkgconfig"
+
 	local emesonargs=()
 
 	local platforms
@@ -379,7 +384,6 @@ src_configure() {
 	emesonargs+=(
 		$(meson_use test build-tests)
 		-Dshared-glapi=enabled
-		-Ddri3=enabled
 		-Dexpat=enabled
 		$(meson_use opengl)
 		$(meson_feature gles1)
