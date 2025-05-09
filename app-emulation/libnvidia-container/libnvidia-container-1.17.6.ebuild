@@ -39,10 +39,6 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-1.17.4-go-1.24.patch"
-)
-
 post_src_unpack() {
 	# Rename the main source directory to the expected name
 	mv NVIDIA-libnvidia-container* "${S}" || die
