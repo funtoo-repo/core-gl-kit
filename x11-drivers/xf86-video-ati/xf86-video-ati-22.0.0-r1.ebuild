@@ -1,7 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info flag-o-matic
+inherit linux-info flag-o-matic
+inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -15,7 +16,6 @@ DEPEND="sys-kernel/linux-headers
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	
 "
 
 RDEPEND="
@@ -25,7 +25,6 @@ x11-base/xorg-server[glamor(+),-minimal]
 udev? ( virtual/libudev:= )
 
 "
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
@@ -33,13 +32,12 @@ AUTOTOOLS_AUTORECONF="1"
 pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
-	# gcc-10 fix:
-	sed -i -e 's/^miPointerSpriteFuncRec/extern miPointerSpriteFuncRec/' ${S}/src/drmmode_display.h || die
 	eautoreconf || die
 	default
-	
 }
+
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		--enable-glamor
@@ -57,7 +55,6 @@ pkg_postinst() {
 	CONFIG_CHECK="~!DRM_RADEON_UMS ~!FB_RADEON "
 	check_extra_config
 }
-
 
 src_install() {
 	default

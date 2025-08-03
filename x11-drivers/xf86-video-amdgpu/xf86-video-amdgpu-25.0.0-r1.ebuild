@@ -1,7 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info flag-o-matic
+inherit linux-info flag-o-matic
+inherit meson
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -12,10 +13,9 @@ S="$WORKDIR/${PN}-${P}"
 DEPEND="
 	x11-base/xorg-proto
 	x11-base/xorg-server
-	>=sys-devel/libtool-2.2.6a
-	sys-devel/m4
+	dev-util/meson
+	sys-devel/ninja
 	>=x11-misc/util-macros-1.18
-	
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
 "
@@ -26,28 +26,24 @@ RDEPEND="
 x11-base/xorg-server[glamor(+),-minimal]
 
 "
-
-WANT_AUTOCONF="latest"
-WANT_AUTOMAKE="latest"
-AUTOTOOLS_AUTORECONF="1"
+MESON_AQA="enabled"
 
 pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
-	eautoreconf || die
+	# Handling Meson specific prepare steps
 	default
+	{
+		:
+	} || die
 }
+
 src_configure() {
-	XORG_CONFIGURE_OPTIONS=(
-		--enable-glamor
-
-	)
-	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
+	meson_src_configure
 }
-
 
 src_install() {
-	default
-	find "${D}" -type f -name '*.la' -delete || die
+	meson_src_install
 }

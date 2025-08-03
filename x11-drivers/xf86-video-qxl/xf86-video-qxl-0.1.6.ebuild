@@ -2,7 +2,8 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-inherit autotools linux-info flag-o-matic python-single-r1
+inherit linux-info flag-o-matic python-single-r1
+inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -16,7 +17,7 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	>=x11-base/xorg-server-1.20.10-r2
+	    >=x11-base/xorg-server-1.20.10-r2
 >=app-emulation/spice-protocol-0.12.0
 
 "
@@ -30,7 +31,6 @@ RDEPEND="
 x11-libs/libdrm
 
 "
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
@@ -39,12 +39,12 @@ pkg_setup() {
 	python-single-r1_pkg_setup
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
-	default
 	eautoreconf || die
-	python_fix_shebang scripts
-	
+	default
 }
+
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable xspice)
@@ -52,7 +52,6 @@ src_configure() {
 	)
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
-
 
 src_install() {
 	default

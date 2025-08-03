@@ -1,7 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info flag-o-matic
+inherit linux-info flag-o-matic
+inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -15,7 +16,6 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
 "
@@ -25,7 +25,6 @@ RDEPEND="
 	x11-libs/libdrm[video_cards_nouveau]
 
 "
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
@@ -33,11 +32,14 @@ AUTOTOOLS_AUTORECONF="1"
 pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
 	eautoreconf || die
 	default
 }
 
+src_configure() {
+}
 
 src_install() {
 	default

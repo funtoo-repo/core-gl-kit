@@ -1,7 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info flag-o-matic udev
+inherit linux-info flag-o-matic udev
+inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -15,14 +16,12 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	
 "
 
 RDEPEND="
 	${DEPEND}
 	
 "
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
@@ -30,10 +29,12 @@ AUTOTOOLS_AUTORECONF="1"
 pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
 	eautoreconf || die
 	default
 }
+
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		--with-hal-bin-dir=/punt
@@ -44,7 +45,6 @@ src_configure() {
 	)
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
-
 
 src_install() {
 	default

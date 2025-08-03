@@ -1,7 +1,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools linux-info flag-o-matic
+inherit linux-info flag-o-matic
+inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
@@ -15,14 +16,12 @@ DEPEND="sys-kernel/linux-headers
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	
 "
 
 RDEPEND="
 	${DEPEND}x11-libs/libpciaccess
 	
 "
-
 WANT_AUTOCONF="latest"
 WANT_AUTOMAKE="latest"
 AUTOTOOLS_AUTORECONF="1"
@@ -30,9 +29,13 @@ AUTOTOOLS_AUTORECONF="1"
 pkg_setup() {
 	append-ldflags -Wl,-z,lazy
 }
+
 src_prepare() {
 	eautoreconf || die
 	default
+}
+
+src_configure() {
 }
 pkg_pretend() {
 	CONFIG_CHECK="~DEVMEM "
@@ -43,7 +46,6 @@ pkg_postinst() {
 	CONFIG_CHECK="~DEVMEM "
 	check_extra_config
 }
-
 
 src_install() {
 	default
