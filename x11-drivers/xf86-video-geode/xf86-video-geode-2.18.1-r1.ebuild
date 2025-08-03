@@ -16,12 +16,13 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	    ztv? ( sys-kernel/linux-headers )
+	ztv? ( sys-kernel/linux-headers )
 
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	
 "
 WANT_AUTOCONF="latest"
@@ -36,7 +37,6 @@ src_prepare() {
 	eautoreconf || die
 	default
 }
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable ztv)

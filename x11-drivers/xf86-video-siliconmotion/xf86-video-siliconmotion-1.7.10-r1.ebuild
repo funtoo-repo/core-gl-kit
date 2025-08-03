@@ -19,7 +19,8 @@ DEPEND="
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	
 "
 WANT_AUTOCONF="latest"
@@ -33,9 +34,6 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
-}
-
-src_configure() {
 }
 
 src_install() {

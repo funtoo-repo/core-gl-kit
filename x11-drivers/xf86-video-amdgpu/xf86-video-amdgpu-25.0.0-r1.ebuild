@@ -14,14 +14,15 @@ DEPEND="
 	x11-base/xorg-proto
 	x11-base/xorg-server
 	dev-util/meson
-	sys-devel/ninja
+	dev-util/ninja
 	>=x11-misc/util-macros-1.18
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	x11-libs/libdrm[video_cards_amdgpu]
 x11-base/xorg-server[glamor(+),-minimal]
 
@@ -39,7 +40,6 @@ src_prepare() {
 		:
 	} || die
 }
-
 src_configure() {
 	meson_src_configure
 }

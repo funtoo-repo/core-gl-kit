@@ -32,12 +32,14 @@ PATCHES=(
 )
 {%- endif %}
 DEPEND="
-	{%- if kernel_config is defined %}sys-kernel/linux-headers{%- endif %}
+	{%- if kernel_config is defined %}
+	sys-kernel/linux-headers
+    {%- endif %}
 	x11-base/xorg-proto
 	x11-base/xorg-server
 	{%- if meson %}
 	dev-util/meson
-	sys-devel/ninja
+	dev-util/ninja
 	{%- else %}
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
@@ -49,14 +51,16 @@ DEPEND="
 	{%- elif iuse_dri is defined %}
 	{{iuse_dri}}? ( x11-base/xorg-server[-minimal] x11-libs/libdrm )
 	{%- endif %}
-	{%- if depend %}
-	    {{depend}}
+	{%- if depend is defined %}
+	{{depend}}
 	{%- endif %}
 "
 
 RDEPEND="
 	${DEPEND}
-	{%- if name.startswith('xf86-video') %}x11-libs/libpciaccess{%- endif %}
+	{%- if name.startswith('xf86-video') %}
+	x11-libs/libpciaccess
+	{%- endif %}
 	{{rdepend}}
 "
 
@@ -88,18 +92,20 @@ src_prepare() {
 {%- endif %}
 }
 
-src_configure() {
 {%- if meson %}
+src_configure() {
 	meson_src_configure
+}
 {%- else %}
 	{%- if config_options is defined %}
+src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		{{config_options}}
 	)
 	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
+}
 	{%- endif %}
 {%- endif %}
-}
 
 {%- if kernel_config is defined %}
 pkg_pretend() {

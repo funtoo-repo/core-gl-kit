@@ -35,9 +35,6 @@ src_prepare() {
 	default
 }
 
-src_configure() {
-}
-
 src_install() {
 	default
 	find "${D}" -type f -name '*.la' -delete || die

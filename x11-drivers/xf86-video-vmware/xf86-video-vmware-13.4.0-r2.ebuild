@@ -18,12 +18,13 @@ DEPEND="
 	>=x11-misc/util-macros-1.18
 	x11-base/xorg-server[-minimal]
 	x11-libs/libdrm
-	    >=x11-base/xorg-server-1.20.10-r2
+	>=x11-base/xorg-server-1.20.10-r2
 
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	x11-libs/libdrm[libkms,video_cards_vmware]
 || (
   media-libs/mesa[xa]
@@ -42,9 +43,6 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
-}
-
-src_configure() {
 }
 
 src_install() {

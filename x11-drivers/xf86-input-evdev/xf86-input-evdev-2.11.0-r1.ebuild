@@ -10,7 +10,8 @@ IUSE=" "
 SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev/-/archive/xf86-input-evdev-2.11.0/xf86-input-evdev-xf86-input-evdev-2.11.0.tar.bz2 -> xf86-input-evdev-2.11.0-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
-DEPEND="sys-kernel/linux-headers
+DEPEND="
+	sys-kernel/linux-headers
 	x11-base/xorg-proto
 	x11-base/xorg-server
 	>=sys-devel/libtool-2.2.6a
@@ -37,9 +38,6 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
-}
-
-src_configure() {
 }
 pkg_pretend() {
 	CONFIG_CHECK="~INPUT_EVDEV "

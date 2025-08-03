@@ -10,7 +10,8 @@ IUSE="+glamor udev "
 SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati/-/archive/xf86-video-ati-22.0.0/xf86-video-ati-xf86-video-ati-22.0.0.tar.bz2 -> xf86-video-ati-22.0.0-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
-DEPEND="sys-kernel/linux-headers
+DEPEND="
+	sys-kernel/linux-headers
 	x11-base/xorg-proto
 	x11-base/xorg-server
 	>=sys-devel/libtool-2.2.6a
@@ -19,7 +20,8 @@ DEPEND="sys-kernel/linux-headers
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	x11-libs/libdrm[video_cards_radeon]
 x11-base/xorg-server[glamor(+),-minimal]
 udev? ( virtual/libudev:= )
@@ -37,7 +39,6 @@ src_prepare() {
 	eautoreconf || die
 	default
 }
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		--enable-glamor

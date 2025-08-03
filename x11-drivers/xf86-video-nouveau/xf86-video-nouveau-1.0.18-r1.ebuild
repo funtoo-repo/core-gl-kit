@@ -21,7 +21,8 @@ DEPEND="
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	x11-libs/libdrm[video_cards_nouveau]
 
 "
@@ -36,9 +37,6 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
-}
-
-src_configure() {
 }
 
 src_install() {

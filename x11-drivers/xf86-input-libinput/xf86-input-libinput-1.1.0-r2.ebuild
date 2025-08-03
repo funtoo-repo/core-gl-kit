@@ -16,7 +16,7 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	    >=dev-libs/libinput-1.5.0:0=
+	>=dev-libs/libinput-1.5.0:0=
 
 "
 
@@ -35,9 +35,6 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
-}
-
-src_configure() {
 }
 
 src_install() {

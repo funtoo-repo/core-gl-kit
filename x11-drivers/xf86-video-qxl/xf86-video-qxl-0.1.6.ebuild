@@ -17,13 +17,14 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
-	    >=x11-base/xorg-server-1.20.10-r2
+	>=x11-base/xorg-server-1.20.10-r2
 >=app-emulation/spice-protocol-0.12.0
 
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	xspice? (
   app-emulation/spice
   ${PYTHON_DEPS}
@@ -44,7 +45,6 @@ src_prepare() {
 	eautoreconf || die
 	default
 }
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable xspice)

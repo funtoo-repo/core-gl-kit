@@ -19,7 +19,8 @@ DEPEND="
 "
 
 RDEPEND="
-	${DEPEND}x11-libs/libpciaccess
+	${DEPEND}
+	x11-libs/libpciaccess
 	
 "
 WANT_AUTOCONF="latest"
@@ -34,7 +35,6 @@ src_prepare() {
 	eautoreconf || die
 	default
 }
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable dga)

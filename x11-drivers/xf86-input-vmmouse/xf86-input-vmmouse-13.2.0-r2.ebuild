@@ -34,7 +34,6 @@ src_prepare() {
 	eautoreconf || die
 	default
 }
-
 src_configure() {
 	XORG_CONFIGURE_OPTIONS=(
 		--with-hal-bin-dir=/punt
