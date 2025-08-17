@@ -6,8 +6,8 @@ inherit autotools
 
 DESCRIPTION="Driver for xorg-server"
 KEYWORDS="*"
-IUSE=" "
-SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse/-/archive/xf86-input-mouse-1.9.5/xf86-input-mouse-xf86-input-mouse-1.9.5.tar.bz2 -> xf86-input-mouse-1.9.5-gitlab.tar.bz2"
+IUSE="ztv "
+SRC_URI="https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.18.2/xf86-video-geode-xf86-video-geode-2.18.2.tar.bz2 -> xf86-video-geode-2.18.2-gitlab.tar.bz2"
 SLOT="0"
 S="$WORKDIR/${PN}-${P}"
 DEPEND="
@@ -16,10 +16,13 @@ DEPEND="
 	>=sys-devel/libtool-2.2.6a
 	sys-devel/m4
 	>=x11-misc/util-macros-1.18
+	ztv? ( sys-kernel/linux-headers )
+
 "
 
 RDEPEND="
 	${DEPEND}
+	x11-libs/libpciaccess
 	
 "
 WANT_AUTOCONF="latest"
@@ -33,6 +36,13 @@ pkg_setup() {
 src_prepare() {
 	eautoreconf || die
 	default
+}
+src_configure() {
+	XORG_CONFIGURE_OPTIONS=(
+		$(use_enable ztv)
+
+	)
+	econf ${XORG_CONFIGURE_OPTIONS[@]} || die
 }
 
 src_install() {

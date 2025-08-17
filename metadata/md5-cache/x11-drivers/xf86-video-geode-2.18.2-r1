@@ -7,6 +7,6 @@ IUSE=ztv kernel_linux
 KEYWORDS=*
 RDEPEND=x11-base/xorg-proto x11-base/xorg-server >=sys-devel/libtool-2.2.6a sys-devel/m4 >=x11-misc/util-macros-1.18 ztv? ( sys-kernel/linux-headers ) x11-libs/libpciaccess
 SLOT=0
-SRC_URI=https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.18.1/xf86-video-geode-xf86-video-geode-2.18.1.tar.bz2 -> xf86-video-geode-2.18.1-gitlab.tar.bz2
+SRC_URI=https://gitlab.freedesktop.org/xorg/driver/xf86-video-geode/-/archive/xf86-video-geode-2.18.2/xf86-video-geode-xf86-video-geode-2.18.2.tar.bz2 -> xf86-video-geode-2.18.2-gitlab.tar.bz2
 _eclasses_=autotools	e9ade2787b2f54643c7cdffbfa1cca9c	eutils	6e6c2737b59a4b982de6fb3ecefd87f8	flag-o-matic	d0939f99dd528dd0c5ec25284877bf5c	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	c90a203b1c14cfa77bd3e37a0e96c955	multilib	d410501a125f99ffb560b0c523cd3d1e	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=cd356d8b0dc91f1fc099cd624006bd77
+_md5_=3862c56d181a9e3d4efd4666e46d1873
