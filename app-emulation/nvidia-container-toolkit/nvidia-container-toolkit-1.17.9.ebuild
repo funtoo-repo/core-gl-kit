@@ -113,14 +113,14 @@ EGO_SUM=(
 
 go-module_set_globals
 
-SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/5603c4fad80d042f1e5059e3c17acbc209904217 -> nvidia-container-toolkit-1.17.8-5603c4f.tar.gz
-https://direct-github.funmore.org/8f/84/6b/8f846ba474cb54634151c4b0a0241906788aec4e1c5c069da7a80abc6f601794118aa17f66b5a7c30717b6b42eca78b6a19dc5cc8bfdf769ea5a2b6b396a56d8 -> nvidia-container-toolkit-1.17.8-funtoo-go-bundle-e905fe78966adcb9465b529faaa1ae85cc2da3f6373de474aa271b3d5284aaa10e7b53292a37a6a752af28b2f3fe22b439b1f704da53df58559d7519bd0aab1d.tar.gz"
+SRC_URI="https://github.com/NVIDIA/nvidia-container-toolkit/tarball/7b183f65117d1bfff04d348671b70fb3e0468ad0 -> nvidia-container-toolkit-1.17.9-7b183f6.tar.gz
+https://direct-github.funmore.org/6e/b5/68/6eb568ba221b43ea7d3449f06f267249ea473aa7d8a9b4aa5f6736f8f09bd91fc90b38ee3d9131ac9d2a40c5a8d211046138a8b8814cd564412f9b39edf40397 -> nvidia-container-toolkit-1.17.9-funtoo-go-bundle-e905fe78966adcb9465b529faaa1ae85cc2da3f6373de474aa271b3d5284aaa10e7b53292a37a6a752af28b2f3fe22b439b1f704da53df58559d7519bd0aab1d.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="*"
 IUSE=""
-S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-5603c4f"
+S="${WORKDIR}/NVIDIA-nvidia-container-toolkit-7b183f6"
 
 RDEPEND="app-emulation/libnvidia-container"
 
