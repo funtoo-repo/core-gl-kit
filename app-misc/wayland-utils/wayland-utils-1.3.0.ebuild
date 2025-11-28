@@ -6,7 +6,7 @@ inherit meson
 
 DESCRIPTION="Display information about supported Wayland protocols and current compositor"
 HOMEPAGE="https://gitlab.freedesktop.org/wayland/wayland-utils"
-SRC_URI="https://gitlab.freedesktop.org/wayland/wayland-utils/-/archive/1.2.0/wayland-utils-v1.2.0.tar.bz2 -> wayland-utils-v1.2.0.tar.bz2"
+SRC_URI="https://gitlab.freedesktop.org/wayland/wayland-utils/-/archive/1.3.0/wayland-utils-v1.3.0.tar.bz2 -> wayland-utils-v1.3.0.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
